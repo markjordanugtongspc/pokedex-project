@@ -79,3 +79,39 @@ body {
 .sort-button:hover {
     background-color: #bb0000; 
 }
+
+/* Styles for the Pokéball loader */
+#pokeball-loader {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: absolute; /* Changed from fixed to absolute */
+    top: 0;
+    left: 0;
+    right: 0; /* Added to ensure it covers the table width */
+    bottom: 0; /* Added to ensure it covers the table height */
+    background-color: rgba(0, 0, 0, 0.5); /* Lightened the background color */
+    z-index: 10; /* Adjusted z-index to be above the table but below other elements */
+}
+
+.pokeball {
+    border: 5px solid #f3f4f6;
+    border-top-color: #cc0000;
+    border-radius: 50%;
+    width: 50px;
+    height: 50px;
+    animation: spin 1s linear infinite;
+}
+
+@keyframes spin {
+    0% {
+        transform: rotate(0deg);
+    }
+    100% {
+        transform: rotate(360deg);
+    }
+}
+
+.hidden {
+    display: none;
+}
