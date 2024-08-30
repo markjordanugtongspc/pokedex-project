@@ -1,8 +1,8 @@
 const pokemonCount = 50; 
 var pokedex = {};
+var isSortedAlphabetically = false;
 
 window.onload = async function() {
-
     createLoader();
 
     for (let i = 1; i <= pokemonCount; i++) {
@@ -15,7 +15,6 @@ window.onload = async function() {
     }, 3000);
 
     document.querySelector('.search-bar').addEventListener('input', function() {
-
         createLoader();
 
         let searchTerm = this.value.toLowerCase();
@@ -28,7 +27,6 @@ window.onload = async function() {
 }
 
 function createLoader() {
-
     let existingLoader = document.getElementById('pokeball-loader');
     if (!existingLoader) {
         const loader = document.createElement('div');
@@ -101,4 +99,29 @@ function updateTable(searchTerm = '') {
     );
 
     filteredPokedex.forEach(pokemon => addPokemonToTable(pokemon));
+}
+
+function sortPokemonAlphabetically() {
+    let sortedPokedex = Object.values(pokedex).sort((a, b) => a.name.localeCompare(b.name));
+    let tableBody = document.querySelector('.tablee tbody');
+    tableBody.innerHTML = ''; // Clear the table
+
+    sortedPokedex.forEach(pokemon => addPokemonToTable(pokemon));
+}
+
+function sortPokemonRandomly() {
+    let shuffledPokedex = Object.values(pokedex).sort(() => 0.5 - Math.random());
+    let tableBody = document.querySelector('.tablee tbody');
+    tableBody.innerHTML = ''; // Clear the table
+
+    shuffledPokedex.forEach(pokemon => addPokemonToTable(pokemon));
+}
+
+function toggleSort() {
+    if (isSortedAlphabetically) {
+        sortPokemonRandomly();
+    } else {
+        sortPokemonAlphabetically();
+    }
+    isSortedAlphabetically = !isSortedAlphabetically;
 }
