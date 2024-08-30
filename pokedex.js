@@ -1,27 +1,22 @@
-const pokemonCount = 50; // Number of Pokémon to fetch
-var pokedex = {}; // Object to store Pokémon data
-var isSortedAlphabetically = false; // Flag to track sorting state
+const pokemonCount = 50; 
+var pokedex = {}; 
+var isSortedAlphabetically = false; 
 
-// Function to run when the window loads
 window.onload = async function() {
-    createLoader(); // Create and show the loader
+    createLoader(); 
 
-    // Fetch Pokémon data
     for (let i = 1; i <= pokemonCount; i++) {
         await getPokemon(i);
     }
-    updateTable(); // Update the table with fetched data
+    updateTable(); 
 
-    // Hide the loader after 3 seconds
     setTimeout(removeLoader, 3000);
 
-    // Add event listener to the search bar
     document.querySelector('.search-bar').addEventListener('input', function() {
-        createLoader(); // Create and show the loader
+        createLoader(); 
 
-        let searchTerm = this.value.toLowerCase(); // Get the search term
+        let searchTerm = this.value.toLowerCase(); 
 
-        // Update the table after 3 seconds
         setTimeout(function() {
             updateTable(searchTerm);
             removeLoader();
@@ -29,7 +24,6 @@ window.onload = async function() {
     });
 }
 
-// Function to create and show the loader
 function createLoader() {
     let existingLoader = document.getElementById('pokeball-loader');
     if (!existingLoader) {
@@ -45,7 +39,6 @@ function createLoader() {
     }
 }
 
-// Function to remove the loader
 function removeLoader() {
     let existingLoader = document.getElementById('pokeball-loader');
     if (existingLoader) {
@@ -53,7 +46,6 @@ function removeLoader() {
     }
 }
 
-// Function to apply styles for the loader
 function applyLoaderStyles() {
     const style = document.createElement('style');
     style.innerHTML = `
@@ -85,7 +77,6 @@ function applyLoaderStyles() {
     document.head.appendChild(style);
 }
 
-// Function to fetch Pokémon data from the API
 async function getPokemon(num) {
     let url = "https://pokeapi.co/api/v2/pokemon/" + num.toString();
     let res = await fetch(url);
@@ -100,7 +91,6 @@ async function getPokemon(num) {
     let pokemonDesc = await res.json();
     pokemonDesc = pokemonDesc["flavor_text_entries"].find(entry => entry.language.name === "en").flavor_text;
 
-    // Store the fetched data in the pokedex object
     pokedex[num] = {
         "name": pokemonName,
         "img": pokemonImg,
@@ -110,7 +100,6 @@ async function getPokemon(num) {
     };
 }
 
-// Function to add a Pokémon to the table
 function addPokemonToTable(pokemon) {
     let tableBody = document.querySelector('.tablee tbody');
     let row = tableBody.insertRow();
@@ -134,51 +123,42 @@ function addPokemonToTable(pokemon) {
     cellDesc.textContent = pokemon["desc"];
 }
 
-// Function to capitalize the first letter of each word in a string
 function capitalizeFirstLetter(string) {
     return string.split(' ').map(word => word.charAt(0).toUpperCase() + word.slice(1)).join(' ');
 }
 
-// Function to update the table based on the search term
 function updateTable(searchTerm = '') {
     let tableBody = document.querySelector('.tablee tbody');
-    tableBody.innerHTML = ''; // Clear the table
+    tableBody.innerHTML = ''; 
 
-    // Filter the pokedex based on the search term
     let filteredPokedex = Object.values(pokedex).filter(pokemon => 
         pokemon.name.toLowerCase().includes(searchTerm)
     );
 
-    // Add each filtered Pokémon to the table
     filteredPokedex.forEach(pokemon => addPokemonToTable(pokemon));
 }
 
-// Function to sort Pokémon alphabetically and update the table
 function sortPokemonAlphabetically() {
     let sortedPokedex = Object.values(pokedex).sort((a, b) => a.name.localeCompare(b.name));
     let tableBody = document.querySelector('.tablee tbody');
-    tableBody.innerHTML = ''; // Clear the table
+    tableBody.innerHTML = ''; 
 
-    // Add each sorted Pokémon to the table
     sortedPokedex.forEach(pokemon => addPokemonToTable(pokemon));
 }
 
-// Function to sort Pokémon randomly and update the table
 function sortPokemonRandomly() {
     let shuffledPokedex = Object.values(pokedex).sort(() => 0.5 - Math.random());
     let tableBody = document.querySelector('.tablee tbody');
-    tableBody.innerHTML = ''; // Clear the table
+    tableBody.innerHTML = ''; 
 
-    // Add each shuffled Pokémon to the table
     shuffledPokedex.forEach(pokemon => addPokemonToTable(pokemon));
 }
 
-// Function to toggle between alphabetical and random sorting
 function toggleSort() {
     if (isSortedAlphabetically) {
         sortPokemonRandomly();
     } else {
         sortPokemonAlphabetically();
     }
-    isSortedAlphabetically = !isSortedAlphabetically; // Toggle the sorting state
+    isSortedAlphabetically = !isSortedAlphabetically; 
 }
