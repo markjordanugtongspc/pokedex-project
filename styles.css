@@ -1,0 +1,88 @@
+body {
+    background-color: #121212; 
+    font-family: 'Arial', sans-serif; 
+}
+.centered-container {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+}
+.box {
+    width: 90%;
+    max-width: 800px; 
+    background-color: #1A1A1A; 
+    padding: 2rem;
+    border-radius: 0.5rem;
+    box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.5);
+    margin-bottom: 2rem;
+}
+.custom-table th {
+    background-color: #cc0000; 
+    color: #ffffff; 
+}
+.custom-table td {
+    background-color: #2a2a2a; 
+    color: #f3f4f6; 
+}
+.search-bar {
+    width: 100%;
+    padding: 0.5rem;
+    margin-bottom: 2rem;
+    border-radius: 9999px; 
+}
+.table-container {
+    max-height: 500px; 
+    overflow-y: auto; 
+    width: 100%;
+}
+.titlee {
+    text-align: center;
+    color: white;
+    font-size: 2rem; 
+}
+.tablee {
+    width: 100%;
+    margin: auto;
+}
+.tablee th,
+.tablee td {
+    text-align: center; 
+    vertical-align: middle; 
+}
+
+#pokeball-loader {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: absolute; 
+    top: 0;
+    left: 0;
+    right: 0; 
+    bottom: 0; 
+    background-color: rgba(0, 0, 0, 0.5); 
+    z-index: 10; 
+}
+
+.pokeball {
+    border: 5px solid #f3f4f6;
+    border-top-color: #cc0000;
+    border-radius: 50%;
+    width: 50px;
+    height: 50px;
+    animation: spin 1s linear infinite;
+}
+
+@keyframes spin {
+    0% {
+        transform: rotate(0deg);
+    }
+    100% {
+        transform: rotate(360deg);
+    }
+}
+
+.hidden {
+    display: none;
+}
