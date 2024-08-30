@@ -1,6 +1,6 @@
 body {
-    background-color: #121212; /* Dark background for the body */
-    font-family: 'Arial', sans-serif; /* Modern font */
+    background-color: #121212; 
+    font-family: 'Arial', sans-serif; 
 }
 .centered-container {
     display: flex;
@@ -11,37 +11,37 @@ body {
 }
 .box {
     width: 90%;
-    max-width: 800px; /* Wider box for modern look */
-    background-color: #1A1A1A; /* Dark color for the box */
+    max-width: 800px; 
+    background-color: #1A1A1A; 
     padding: 2rem;
     border-radius: 0.5rem;
     box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.5);
     margin-bottom: 2rem;
 }
 .custom-table th {
-    background-color: #cc0000; /* Pokémon red */
-    color: #ffffff; /* White text color */
+    background-color: #cc0000; 
+    color: #ffffff; 
 }
 .custom-table td {
-    background-color: #2a2a2a; /* Slightly lighter dark background for cells */
-    color: #f3f4f6; /* Light text color for readability */
+    background-color: #2a2a2a; 
+    color: #f3f4f6; 
 }
 .search-bar {
     width: 100%;
     padding: 0.5rem;
     margin-bottom: 2rem;
-    border-radius: 9999px; /* Rounded search bar for modern look */
+    border-radius: 9999px; 
 }
 .table-container {
-    max-height: 500px; /* Adjust the height as needed */
-    overflow-y: auto; /* Enables vertical scrolling */
-    overflow-x: hidden; /* Prevents horizontal scrolling */
+    max-height: 500px; 
+    overflow-y: auto; 
+    overflow-x: hidden; 
     width: 100%;
 }
 .titlee {
     text-align: center;
     color: white;
-    font-size: 2rem; /* Larger font size for modern look */
+    font-size: 2rem; 
 }
 .tablee {
     width: 100%;
@@ -49,35 +49,33 @@ body {
 }
 .tablee th,
 .tablee td {
-    text-align: center; /* Centers all text in table headers and cells */
-    vertical-align: middle; /* Aligns text vertically in the middle */
+    text-align: center; 
+    vertical-align: middle; 
 }
 
-/* Modern scrollbar design */
 .table-container::-webkit-scrollbar {
-    width: 12px; /* Adjust width of the scrollbar */
+    width: 12px; 
 }
 
 .table-container::-webkit-scrollbar-track {
-    background: #2D3748; /* Color of the track */
+    background: #2D3748; 
 }
 
 .table-container::-webkit-scrollbar-thumb {
-    background-color: #A0AEC0; /* Color of the scrollbar itself */
-    border-radius: 20px; /* Roundness of the corners */
-    border: 3px solid #2D3748; /* Creates padding around scroll thumb */
+    background-color: #A0AEC0; 
+    border-radius: 20px; 
+    border: 3px solid #2D3748; 
 }
 
 .table-container::-webkit-scrollbar-thumb:hover {
-    background-color: #718096; /* Darker color on hover */
+    background-color: #718096; 
 }
 
-/* Style for the sort button */
 .sort-button {
     cursor: pointer;
     transition: background-color 0.3s;
 }
 
 .sort-button:hover {
-    background-color: #bb0000; /* Darker Pokémon red on hover */
+    background-color: #bb0000; 
 }
